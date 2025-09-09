@@ -6,16 +6,14 @@ import { useState } from "react";
 import Checkbox from "@mui/material/Checkbox";
 import IconButton from "@mui/material/IconButton";
 import ClearIcon from "@mui/icons-material/Clear";
-export default function Todo({ data, deleteTodo }) {
-  const [checked, setChecked] = useState(0);
-
-  const handleToggle = () => {
-    setChecked(!checked);
-  };
+export default function Todo({ data, deleteTodo, handleToggle }) {
   return (
     <ListItem
       secondaryAction={
-        <IconButton edge="end" onClick={() => checked && deleteTodo(data.id)}>
+        <IconButton
+          edge="end"
+          onClick={() => data.isCompleted && deleteTodo(data.id)}
+        >
           <ClearIcon />
         </IconButton>
       }
@@ -23,7 +21,7 @@ export default function Todo({ data, deleteTodo }) {
     >
       <ListItemButton role={undefined} onClick={handleToggle} dense>
         <ListItemIcon>
-          <Checkbox edge="start" checked={checked} disableRipple />
+          <Checkbox edge="start" checked={data.isCompleted} disableRipple />
         </ListItemIcon>
         <ListItemText primary={`${data.text}`} />
       </ListItemButton>

@@ -4,6 +4,7 @@ import InputAdornment from "@mui/material/InputAdornment";
 import FormControl from "@mui/material/FormControl";
 import FilledInput from "@mui/material/FilledInput";
 import InputLabel from "@mui/material/InputLabel";
+import IconButton from "@mui/material/IconButton";
 
 export default function AddTodo({ addTodo }) {
   const [input, setInput] = useState("");
@@ -17,13 +18,15 @@ export default function AddTodo({ addTodo }) {
   };
   return (
     <form onSubmit={handleSubmit}>
-      <InputLabel htmlFor="name">Todo</InputLabel>
+      <InputLabel htmlFor="name">make todo</InputLabel>
       <FormControl sx={{ m: 1, width: "20rem" }} variant="outlined">
         <FilledInput
           id="name"
           endAdornment={
             <InputAdornment position="end">
-              <CreateIcon />
+              <IconButton type="submit">
+                <CreateIcon />
+              </IconButton>
             </InputAdornment>
           }
           value={input}
